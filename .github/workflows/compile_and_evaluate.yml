@@ -9,17 +9,13 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: Set up Git user
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
-
-    - name: Pull latest changes
-      run: |
-        git stash
-        git pull origin main
-        git stash pop
 
     - name: Set up C++
       run: sudo apt-get update && sudo apt-get install -y g++
@@ -68,9 +64,6 @@ jobs:
     - name: Commit results
       run: |
         git add Sheet*/Submissions/*/README.md
+        git commit -m 'Update evaluation results' || echo "No changes to commit"
         git pull --rebase
-        if git diff-index --quiet HEAD; then
-          echo "No changes to commit"
-        else
-          git commit -m 'Update evaluation results'
-          git push
+        git push
