@@ -20,16 +20,20 @@ jobs:
 
     - name: Compile and evaluate programs
       run: |
-        for file in Submissions/*/*.cpp; do
-          dir=$(dirname "$file")
-          echo "Compiling $file"
-          g++ -o "${file%.cpp}" "$file"
-          if [ $? -eq 0 ]; then
-            echo "Running ${file%.cpp}"
-            result=$(/usr/bin/time -v ./"${file%.cpp}" 2>&1)
-            echo "$result" > "${dir}/README.md"
-          else
-            echo "Compilation failed for $file" > "${dir}/README.md"
+        for sheet in Sheet*; do
+          if [ -d "$sheet/Submissions" ]; then
+            for file in "$sheet/Submissions"/*.cpp; do
+              dir=$(dirname "$file")
+              echo "Compiling $file"
+              g++ -o "${file%.cpp}" "$file"
+              if [ $? -eq 0 ]; then
+                echo "Running ${file%.cpp}"
+                result=$(/usr/bin/time -v ./"${file%.cpp}" 2>&1)
+                echo "$result" > "${dir}/README.md"
+              else
+                echo "Compilation failed for $file" > "${dir}/README.md"
+              fi
+            done
           fi
         done
 
@@ -37,6 +41,6 @@ jobs:
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
-        git add Submissions/*/README.md
+        git add Sheet*/Submissions/*/README.md
         git commit -m 'Update evaluation results'
         git push
