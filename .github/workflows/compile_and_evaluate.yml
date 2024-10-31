@@ -21,6 +21,7 @@ jobs:
     - name: Compile and evaluate programs
       run: |
         for sheet in Sheet*; do
+          echo "Running $sheet"
           if [ -d "$sheet/Submissions" ]; then
             for file in "$sheet/Submissions"/*.cpp; do
               if [ -f "$file" ]; then
