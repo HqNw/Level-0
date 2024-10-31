@@ -44,9 +44,9 @@ jobs:
                     if [ $? -eq 0 ]; then
                       echo "Running ${file%.cpp}"
                       result=$(/usr/bin/time -v ./"${file%.cpp}" 2>&1)
-                      echo "$result" > "${subdir}/README.md"
+                      echo "$result" >> "${subdir}/README.md"
                     else
-                      echo "Compilation failed for $file" > "${subdir}/README.md"
+                      echo "Compilation failed for $file" >> "${subdir}/README.md"
                     fi
                   else
                     echo "No .cpp files found in $subdir"
