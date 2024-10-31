@@ -1,7 +1,7 @@
-	Command being timed: "./Sheet 1/Submissions/Ahmed_Reda/test"
+	Command being timed: "./Sheet 1/Submissions/Ahmed_Reda/test1"
 	User time (seconds): 0.00
 	System time (seconds): 0.00
-	Percent of CPU this job got: 87%
+	Percent of CPU this job got: 85%
 	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.00
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
@@ -10,7 +10,7 @@
 	Maximum resident set size (kbytes): 1152
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 63
+	Minor (reclaiming a frame) page faults: 65
 	Voluntary context switches: 1
 	Involuntary context switches: 0
 	Swaps: 0
