@@ -37,6 +37,8 @@ jobs:
             for subdir in "$sheet/Submissions"/*; do
               if [ -d "$subdir" ]; then
                 echo "Processing $subdir"
+                # Clear old test results
+                echo "" > "${subdir}/README.md"
                 for file in "$subdir"/*.cpp; do
                   if [ -f "$file" ]; then
                     echo "Compiling $file"
